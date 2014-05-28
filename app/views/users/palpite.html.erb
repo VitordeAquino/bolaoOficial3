@@ -1,0 +1,67 @@
+<h3>Palpites do usuário: <%= User.find_by_id(@games.first.user_id).nome %></h3>
+
+<% contador_admin = 1 %> 
+<table class="table table-striped" >
+<% @games.each do |game| %>
+
+<% if contador_admin == 1 || contador_admin == 7 || contador_admin == 13 || contador_admin == 19 || contador_admin == 25 || contador_admin == 31 || contador_admin == 37 || contador_admin == 43 %>
+                  <tr>
+                        <td width=400px></td>
+                        <td width=50px> 
+
+                        <% if contador_admin == 1 %> 
+                        <h4 style="font-family:arial; color:#231e5b">Grupo A</h4>
+                        <% end %>
+
+                        <% if contador_admin == 7 %> 
+                        <h4 style="font-family:arial; color:#231e5b">Grupo B</h4>
+                        <% end %>
+
+                        <% if contador_admin == 13 %> 
+                        <h4 style="font-family:arial; color:#231e5b">Grupo C</h4>
+                        <% end %>
+
+                        <% if contador_admin == 19 %> 
+                        <h4 style="font-family:arial; color:#231e5b">Grupo D</h4>
+                        <% end %>
+
+                        <% if contador_admin == 25 %> 
+                        <h4 style="font-family:arial; color:#231e5b">Grupo E</h4>
+                        <% end %>
+
+                        <% if contador_admin == 31 %> 
+                        <h4 style="font-family:arial; color:#231e5b">Grupo F</h4>
+                        <% end %>
+
+                        <% if contador_admin == 37 %> 
+                        <h4 style="font-family:arial; color:#231e5b">Grupo G</h4>
+                        <% end %>
+
+                        <% if contador_admin == 43 %> 
+                        <h4 style="font-family:arial; color:#231e5b">Grupo H</h4>
+                        <% end %>
+
+                        </td>
+                        <td></td>
+                        <td width=10px></td>
+                        <td width=5px> </td>
+                        <td width=10px></td>
+                        <td> </td>
+                        <td width=50px></td>
+                        <td width=400px></td>
+                  </tr>
+                <% end %>
+  <tr>
+          <td width=400px> </td>
+          <td width=50px><%= game.time1 %></td>
+          <td><%= image_tag src="/images/#{game.time1}.png"%></td>
+          <td width=10px><%=  game.score1%></td>
+          <td width=5px>X</td>
+          <td width=10px><%= game.score2%></td>
+          <td><%= image_tag src="/images/#{game.time2}.png" %>  </td>
+          <td width=50px><%= game.time2 %></td>
+          <td width=400px> </td>
+</tr>
+<% contador_admin += 1 %> 
+<% end %>
+</table>

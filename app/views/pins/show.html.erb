@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="span6 offset3">
+<div class="well">
+	<%= image_tag @pin.image(:medium)%>
+<p>
+  <strong>Descricao:</strong>
+  <%= @pin.descricao %>
+</p>
+<p>
+	<strong>Email:</strong>
+  <%= @pin.user.email %>
+</p>
+
+<% if current_user == @pin.user %>
+	<%= link_to 'Edit', edit_pin_path(@pin) %> 
+	<%= link_to 'Back', pins_path %>
+<% end %>
+</div>
+</div>
+</div>

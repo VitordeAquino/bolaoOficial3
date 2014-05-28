@@ -1,0 +1,124 @@
+<div class="container" id="container1">
+  <div class="row">
+    <div class="col-md-4" style="overflow-y:auto; height:700px">
+          <h2 style="font-family:arial; color:#231e5b" align="center">Classificação<h2>
+          
+          <div>
+            <table>
+              <tbody>
+                <table class="table table-condensed" >
+                  <td>Nome</td>
+                  <td>Pontos</td>
+                  <% @users.each do |user| %>
+                    <tr>
+                      <td><%= link_to user.nome, palpite_path(:id => user.id) %></td>
+                      <td><%= user.pontos%></td>
+                    </tr>
+                  <% end %>
+                </table>
+              </tbody>
+            </table>
+          </div>
+    </div> 
+    <div class="col-md-4" style="overflow-y:auto; height:700px">
+          <table class="table table-condensed" >
+             <h2 style="font-family:arial; color:#231e5b" align="center">Tabela Oficial<h2>
+              <% contador_admin = 1%>
+              <% User.find_by_id(1).games.order(:id).each do |game| %>
+                <% if contador_admin == 1 || contador_admin == 7 || contador_admin == 13 || contador_admin == 19 || contador_admin == 25 || contador_admin == 31 || contador_admin == 37 || contador_admin == 43 %>
+                  <tr>
+                        <td width=400px></td>
+                        <td width=50px> 
+
+                        <% if contador_admin == 1 %> 
+                        <h4 style="font-family:arial; color:#231e5b">Grupo A</h4>
+                        <% end %>
+
+                        <% if contador_admin == 7 %> 
+                        <h4 style="font-family:arial; color:#231e5b">Grupo B</h4>
+                        <% end %>
+
+                        <% if contador_admin == 13 %> 
+                        <h4 style="font-family:arial; color:#231e5b">Grupo C</h4>
+                        <% end %>
+
+                        <% if contador_admin == 19 %> 
+                        <h4 style="font-family:arial; color:#231e5b">Grupo D</h4>
+                        <% end %>
+
+                        <% if contador_admin == 25 %> 
+                        <h4 style="font-family:arial; color:#231e5b">Grupo E</h4>
+                        <% end %>
+
+                        <% if contador_admin == 31 %> 
+                        <h4 style="font-family:arial; color:#231e5b">Grupo F</h4>
+                        <% end %>
+
+                        <% if contador_admin == 37 %> 
+                        <h4 style="font-family:arial; color:#231e5b">Grupo G</h4>
+                        <% end %>
+
+                        <% if contador_admin == 43 %> 
+                        <h4 style="font-family:arial; color:#231e5b">Grupo H</h4>
+                        <% end %>
+
+                        </td>
+                        <td></td>
+                        <td width=10px></td>
+                        <td width=5px> </td>
+                        <td width=10px></td>
+                        <td> </td>
+                        <td width=50px></td>
+                        <td width=400px></td>
+                  </tr>
+                <% end %>
+              <tr>
+                    <td width=400px> </td>
+                    <td width=50px><%= game.time1 %></td>
+                    <td><%= image_tag src="/images/#{game.time1}.png"%></td>
+                    <td width=10px><%= game.score1%></td>
+                    <td width=5px>X</td>
+                    <td width=10px><%= game.score2%></td>
+                    <td><%= image_tag src="/images/#{game.time2}.png" %>  </td>
+                    <td width=50px><%= game.time2 %></td>
+                    <td width=400px> </td>
+              </tr>
+          <% contador_admin += 1%>
+          <% end %>
+        </table>
+    </div>
+    <div class="col-md-4 " align="center">
+      <% unless user_signed_in? %>
+
+      <div class="jumbotron">
+        <h2 style="font-family:arial; color:white">Login</h2>
+         
+          <%= form_for("user", :url => user_session_path) do |f| %> 
+              <t style="font-family:arial; color:white"><%= f.label :email %></t> <br/> 
+              <%= f.email_field :email %> <br/> 
+              <p></p>
+              <t style="font-family:arial; color:white"><%= f.label :password %></t> <br/> 
+              <%= f.password_field :password %> 
+              <br/> 
+              <p><div><%= f.submit "Logar",class: "btn btn-primary btn-md" %></div></p> 
+              <%= link_to "Esqueceu sua senha?", new_password_path('user'), {:style=>'color:yellow;', :class => "css_class"}  %> <br/>
+              <%= link_to "Registre-se!", new_registration_path("user"), {:style=>'color:yellow', :class => "css_class"}  %> 
+          <% end %> 
+       
+      </div>
+      <% end %>
+      <div class="jumbotron">
+        <div align="center">
+        <% @quantidade = User.all.where(admin: false, pago: true).count %>
+        <font size="6" face="Verdana" color="yellow" ><%= @quantidade%></font> <font size="4" face="Verdana" color="yellow">apostadores</font> <br/>
+        <font size="4" face="Verdana" color="yellow" >Já fizeram o pagamento</font> </br>
+        <br/>
+        <font size="5" face="Verdana" color="yellow">Prêmios:</font>
+        <br/> 
+        <font size="4" face="Verdana" color="yellow">1º:</font><font size="3" face="Verdana" color="white">R$ <%=@quantidade*30*0.6 %><br/></font>
+        <font size="4" face="Verdana" color="yellow">2º:</font><font size="3" face="Verdana" color="white">R$ <%=@quantidade*30*0.3 %><br/></font>
+        <font size="4" face="Verdana" color="yellow">3º:</font><font size="3" face="Verdana" color="white">R$ <%=@quantidade*30*0.1 %></font>
+      </div>
+    </div>
+  </div>
+</div>

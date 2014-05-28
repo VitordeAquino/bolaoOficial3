@@ -1,0 +1,11 @@
+<%= simple_form_for(@pin, html: { class: "form-horizontal"}) do |f| %>
+  <%= f.full_error :image_file_size, class: "alert alert-error"%>
+  <%= f.full_error :image_content_type, class: "alert alert-error"%>
+
+  	<p><%= f.input :image, label: "Enviar Imagem" %></p>
+    <p><%= f.input :descricao, :as => :text, input_html: { rows: "3"} %></p>
+  
+  <div class="form-actions">
+    <%= f.button :submit, "enviar", class: "btn btn-primary" %>
+  </div>
+<% end %>
