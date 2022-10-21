@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_filter :authenticate_user!, only: [:show, :edit, :update]
+	before_action :authenticate_user!, only: [:show, :edit, :update]
 	before_action :set_user, only: [:show, :edit, :meu_palpite]
   before_action :retorna_user, only: [:palpite, :edit_usuario, :update]
 
@@ -58,7 +58,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(current_user)
+    @user = User.find(params[:id])
   end
 
   def retorna_user

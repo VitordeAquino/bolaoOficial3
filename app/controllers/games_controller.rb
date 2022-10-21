@@ -1,11 +1,11 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   # GET /games
   # GET /games.json
   def index
-    @games = User.find(current_user).games.order(:id)
+    @games = User.find(current_user.id).games.order(:id)
   end
 
   # GET /games/1

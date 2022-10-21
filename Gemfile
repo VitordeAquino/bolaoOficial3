@@ -1,15 +1,15 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.1'
+gem 'rails'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder', '~> 1.2'
+gem 'jbuilder'
 gem 'devise'
 gem 'simple_form'
 gem 'thin'
-gem "paperclip", "~> 3.0"
-gem 'aws-sdk'
-gem 'rails-i18n', '~> 4.0.0'
+gem "paperclip"
+#gem 'aws-sdk'
+gem 'rails-i18n'
 
 # Use sqlite3 as the database for Active Record
 group :development, :test do
@@ -17,18 +17,18 @@ group :development, :test do
 end
 
 group :production do
-	gem 'pg'
+	gem 'pg', '~> 1.4', '>= 1.4.4'
 	gem 'rails_12factor'
 end
 
 group :assets do
-	gem 'sass-rails', '~> 4.0.0'
-	gem 'uglifier', '>= 1.3.0'
-	gem 'coffee-rails', '~> 4.0.0'
+	gem 'sass-rails'
+	gem 'uglifier'
+	gem 'coffee-rails'
 	
 end
 
-gem 'bootstrap-sass', '~> 3.1.0'
+gem 'bootstrap-sass'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

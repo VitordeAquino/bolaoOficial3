@@ -35,10 +35,10 @@ BolaoOficial::Application.configure do
     config.action_mailer.smtp_settings = {
     :address            => 'smtp.gmail.com',
     :port               => 587,
-    :domain             => 'google.com', #you can also use google.com
+    :domain             => 'gmail.com', #you can also use google.com
     :enable_starttls_auto => true,
     :authentication     => :plain,
-    :user_name          => 'bolao2014brasil@gmail.com',
-    :password           => 'aljrnevi'
+    :user_name          => 'bolao2022catar@gmail.com',
+    :password           => 'xormdudvmjyqtvvk'
     }
 end

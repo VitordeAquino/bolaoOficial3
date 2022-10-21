@@ -4,14 +4,14 @@
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <a class="navbar-brand" href="#">Bolão da Copa 2014</a>
+        <a class="navbar-brand" href="#">Bolão da Copa 2022</a>
         <li><%= link_to "Home", root_path %></a></li>
         <li><%= link_to "Regras", regras_path %></a></li>
         <% if current_user %>
           <li><%= link_to "Meu Perfil", edit_user_registration_path %></li>
           <% if current_user.admin? %><li>
             <li><%= link_to "Meus Jogos", games_path %></li>
-            <li><%= link_to "Comprovantes", pins_path%></li>
+            
             <li><%= link_to "Usuarios Cadastrados", usuarios_cadastrados_path%></li>
           <% else %>
             <li><%= link_to 'Meus Jogos', edit_user_path(current_user) %></li>
@@ -21,9 +21,8 @@
       <ul class="nav navbar-nav pull-right">
         <% if current_user %>
           <li ><%= link_to current_user.nome %></li>
-          <% unless current_user.admin? %>
-          <li><%= link_to "Enviar Comprovante", new_pin_path %></li>
-          <% end %>
+          <!– <% unless current_user.admin? %> –>
+          <!– <% end %> –>
           <li ><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
         <% end %>
       </ul>

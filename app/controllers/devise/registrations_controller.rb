@@ -1,7 +1,7 @@
 class Devise::RegistrationsController < DeviseController
-  prepend_before_filter :require_no_authentication, :only => [ :new, :create, :cancel ]
-  prepend_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy]
-  prepend_after_filter :create_games, :only => [:create]
+  prepend_before_action :require_no_authentication, :only => [ :new, :create, :cancel ]
+  prepend_before_action :authenticate_scope!, :only => [:edit, :update, :destroy]
+  prepend_after_action :create_games, :only => [:create]
 
   # GET /resource/sign_up
   def new
@@ -11,58 +11,58 @@ class Devise::RegistrationsController < DeviseController
 
   def create_games
     if current_user != nil
-      Game.create(time1: "Brasil", time2: "Croacia", user_id: current_user.id, numeroDoJogo: 1, modificado: false)
-      Game.create(time1: "Mexico", time2: "Camaroes", user_id: current_user.id, numeroDoJogo: 2, modificado: false)
-      Game.create(time1: "Brasil", time2: "Mexico", user_id: current_user.id, numeroDoJogo: 3, modificado: false)
-      Game.create(time1: "Croacia", time2: "Camaroes", user_id: current_user.id, numeroDoJogo: 4, modificado: false)
-      Game.create(time1: "Camaroes", time2: "Brasil", user_id: current_user.id, numeroDoJogo: 5, modificado: false)
-      Game.create(time1: "Croacia", time2: "Mexico", user_id: current_user.id, numeroDoJogo: 6, modificado: false)
+      Game.create(time1: "catar", time2: "Equador", user_id: current_user.id, numeroDoJogo: 1, modificado: false)
+      Game.create(time1: "Senegal", time2: "Holanda", user_id: current_user.id, numeroDoJogo: 2, modificado: false)
+      Game.create(time1: "catar", time2: "Senegal", user_id: current_user.id, numeroDoJogo: 3, modificado: false)
+      Game.create(time1: "Holanda", time2: "Equador",  user_id: current_user.id, numeroDoJogo: 4, modificado: false)
+      Game.create(time1: "Holanda", time2: "catar", user_id: current_user.id, numeroDoJogo: 5, modificado: false)
+      Game.create(time1: "Equador", time2: "Senegal", user_id: current_user.id, numeroDoJogo: 6, modificado: false)
 
-      Game.create(time1: "Espanha", time2: "Holanda", user_id: current_user.id, numeroDoJogo: 7, modificado: false)
-      Game.create(time1: "Chile", time2: "Australia", user_id: current_user.id, numeroDoJogo: 8, modificado: false)
-      Game.create(time1: "Australia", time2: "Holanda", user_id: current_user.id, numeroDoJogo: 9, modificado: false)
-      Game.create(time1: "Espanha", time2: "Chile", user_id: current_user.id, numeroDoJogo: 10, modificado: false)
-      Game.create(time1: "Australia", time2: "Espanha", user_id: current_user.id, numeroDoJogo: 11, modificado: false)
-      Game.create(time1: "Holanda", time2: "Chile", user_id: current_user.id, numeroDoJogo: 12, modificado: false)
+      Game.create(time1: "Inglaterra", time2: "Ira",  user_id: current_user.id, numeroDoJogo: 7, modificado: false)
+      Game.create(time1: "Estados Unidos", time2: "Pais de Gales", user_id: current_user.id, numeroDoJogo: 8, modificado: false)
+      Game.create(time1: "Pais de Gales", time2: "Ira", user_id: current_user.id, numeroDoJogo: 9, modificado: false)
+      Game.create(time1: "Inglaterra", time2: "Estados Unidos", user_id: current_user.id, numeroDoJogo: 10, modificado: false)
+      Game.create(time1: "Ira", time2: "Estados Unidos", user_id: current_user.id, numeroDoJogo: 11, modificado: false)
+      Game.create(time1: "Pais de Gales", time2: "Inglaterra", user_id: current_user.id, numeroDoJogo: 12, modificado: false)
 
-      Game.create(time1: "Colombia", time2: "Grecia", user_id: current_user.id, numeroDoJogo: 13, modificado: false)
-      Game.create(time1: "Costa do Marfim", time2: "Japao", user_id: current_user.id, numeroDoJogo: 14, modificado: false)
-      Game.create(time1: "Colombia", time2: "Costa do Marfim", user_id: current_user.id, numeroDoJogo: 15, modificado: false)
-      Game.create(time1: "Japao", time2: "Grecia", user_id: current_user.id, numeroDoJogo: 16, modificado: false)
-      Game.create(time1: "Grecia", time2: "Costa do Marfim", user_id: current_user.id, numeroDoJogo: 17, modificado: false)
-      Game.create(time1: "Japao", time2: "Colombia", user_id: current_user.id, numeroDoJogo: 18, modificado: false)
+      Game.create(time1: "Argentina", time2: "Arabia Saudita", user_id: current_user.id, numeroDoJogo: 13, modificado: false)
+      Game.create(time1: "Mexico", time2: "Polonia", user_id: current_user.id, numeroDoJogo: 14, modificado: false)
+      Game.create(time1: "Polonia", time2: "Arabia Saudita", user_id: current_user.id, numeroDoJogo: 15, modificado: false)
+      Game.create(time1: "Argentina", time2: "Mexico", user_id: current_user.id, numeroDoJogo: 16, modificado: false)
+      Game.create(time1: "Polonia", time2: "Argentina", user_id: current_user.id, numeroDoJogo: 17, modificado: false)
+      Game.create(time1: "Arabia Saudita", time2: "Mexico", user_id: current_user.id, numeroDoJogo: 18, modificado: false)
 
-      Game.create(time1: "Uruguai", time2: "Costa Rica", user_id: current_user.id, numeroDoJogo: 19, modificado: false)
-      Game.create(time1: "Inglaterra", time2: "Italia", user_id: current_user.id, numeroDoJogo: 20, modificado: false)
-      Game.create(time1: "Uruguai", time2: "Inglaterra", user_id: current_user.id, numeroDoJogo: 21, modificado: false)
-      Game.create(time1: "Italia", time2: "Costa Rica", user_id: current_user.id, numeroDoJogo: 22, modificado: false)
-      Game.create(time1: "Costa Rica", time2: "Inglaterra", user_id: current_user.id, numeroDoJogo: 23, modificado: false)
-      Game.create(time1: "Italia", time2: "Uruguai", user_id: current_user.id, numeroDoJogo: 24, modificado: false)
+      Game.create(time1: "Dinamarca", time2: "Tunisia", user_id: current_user.id, numeroDoJogo: 19, modificado: false)
+      Game.create(time1: "Franca", time2: "Australia", user_id: current_user.id, numeroDoJogo: 20, modificado: false)
+      Game.create(time1: "Tunisia", time2: "Australia", user_id: current_user.id, numeroDoJogo: 21, modificado: false)
+      Game.create(time1: "Franca", time2: "Dinamarca", user_id: current_user.id, numeroDoJogo: 22, modificado: false)
+      Game.create(time1: "Tunisia", time2: "Franca", user_id: current_user.id, numeroDoJogo: 23, modificado: false)
+      Game.create(time1: "Australia", time2: "Dinamarca", user_id: current_user.id, numeroDoJogo: 24, modificado: false)
 
-      Game.create(time1: "Suica", time2: "Equador", user_id: current_user.id, numeroDoJogo: 25, modificado: false)
-      Game.create(time1: "Franca", time2: "Honduras", user_id: current_user.id, numeroDoJogo: 26, modificado: false)
-      Game.create(time1: "Suica", time2: "Franca", user_id: current_user.id, numeroDoJogo: 27, modificado: false)
-      Game.create(time1: "Honduras", time2: "Equador", user_id: current_user.id, numeroDoJogo: 28, modificado: false)
-      Game.create(time1: "Equador", time2: "Franca", user_id: current_user.id, numeroDoJogo: 29, modificado: false)
-      Game.create(time1: "Honduras", time2: "Suica", user_id: current_user.id, numeroDoJogo: 30, modificado: false)
+      Game.create(time1: "Alemanha", time2: "Japao", user_id: current_user.id, numeroDoJogo: 25, modificado: false)
+      Game.create(time1: "Espanha", time2: "Costa Rica", user_id: current_user.id, numeroDoJogo: 26, modificado: false)
+      Game.create(time1: "Japao", time2: "Costa Rica", user_id: current_user.id, numeroDoJogo: 27, modificado: false)
+      Game.create(time1: "Espanha", time2: "Alemanha", user_id: current_user.id, numeroDoJogo: 28, modificado: false)
+      Game.create(time1: "Japao", time2: "Espanha", user_id: current_user.id, numeroDoJogo: 29, modificado: false)
+      Game.create(time1: "Costa Rica", time2: "Alemanha", user_id: current_user.id, numeroDoJogo: 30, modificado: false)
 
-      Game.create(time1: "Argentina", time2: "Bosnia-Herzegovina", user_id: current_user.id, numeroDoJogo: 31, modificado: false)
-      Game.create(time1: "Ira", time2: "Nigeria", user_id: current_user.id, numeroDoJogo: 32, modificado: false)
-      Game.create(time1: "Argentina", time2: "Ira", user_id: current_user.id, numeroDoJogo: 33)
-      Game.create(time1: "Nigeria", time2: "Bosnia-Herzegovina", user_id: current_user.id, numeroDoJogo: 34, modificado: false)
-      Game.create(time1: "Bosnia-Herzegovina", time2: "Ira", user_id: current_user.id, numeroDoJogo: 35, modificado: false)
-      Game.create(time1: "Nigeria", time2: "Argentina", user_id: current_user.id, numeroDoJogo: 36, modificado: false)
+      Game.create(time1: "Suica", time2: "Camaroes", user_id: current_user.id, numeroDoJogo: 31, modificado: false)
+      Game.create(time1: "Brasil", time2: "Servia", user_id: current_user.id, numeroDoJogo: 32, modificado: false)
+      Game.create(time1: "Camaroes", time2: "Servia", user_id: current_user.id, numeroDoJogo: 33)
+      Game.create(time1: "Brasil", time2: "Suica", user_id: current_user.id, numeroDoJogo: 34, modificado: false)
+      Game.create(time1: "Camaroes", time2: "Brasil", user_id: current_user.id, numeroDoJogo: 35, modificado: false)
+      Game.create(time1: "Servia", time2: "Suica", user_id: current_user.id, numeroDoJogo: 36, modificado: false)
 
-      Game.create(time1: "Alemanha", time2: "Portugal", user_id: current_user.id, numeroDoJogo: 37, modificado: false)
-      Game.create(time1: "Gana", time2: "Estados Unidos", user_id: current_user.id, numeroDoJogo: 38, modificado: false)
-      Game.create(time1: "Alemanha", time2: "Gana", user_id: current_user.id, numeroDoJogo: 39, modificado: false)
-      Game.create(time1: "Estados Unidos", time2: "Portugal", user_id: current_user.id, numeroDoJogo: 40, modificado: false)
-      Game.create(time1: "Portugal", time2: "Gana", user_id: current_user.id, numeroDoJogo: 41, modificado: false)
-      Game.create(time1: "Estados Unidos", time2: "Alemanha", user_id: current_user.id, numeroDoJogo: 42, modificado: false)
+      Game.create(time1: "Uruguai", time2: "Coreia do Sul", user_id: current_user.id, numeroDoJogo: 37, modificado: false)
+      Game.create(time1: "Portugal", time2: "Gana", user_id: current_user.id, numeroDoJogo: 38, modificado: false)
+      Game.create(time1: "Coreia do Sul", time2: "Gana", user_id: current_user.id, numeroDoJogo: 39, modificado: false)
+      Game.create(time1: "Portugal", time2: "Uruguai", user_id: current_user.id, numeroDoJogo: 40, modificado: false)
+      Game.create(time1: "Coreia do Sul", time2: "Portugal", user_id: current_user.id, numeroDoJogo: 41, modificado: false)
+      Game.create(time1: "Gana", time2: "Uruguai", user_id: current_user.id, numeroDoJogo: 42, modificado: false)
 
       Game.create(time1: "Belgica", time2: "Argelia", user_id: current_user.id, numeroDoJogo: 43, modificado: false)
       Game.create(time1: "Russia", time2: "Coreia do Sul", user_id: current_user.id, numeroDoJogo: 44, modificado: false)
-      Game.create(time1: "Belgica", time2: "Russia", user_id: current_user.id, numeroDoJogo: 45, modificado: false)
+      Game.create(time1: "Belgica", time2: "Russia",user_id: current_user.id, numeroDoJogo: 45, modificado: false)
       Game.create(time1: "Coreia do Sul", time2: "Argelia", user_id: current_user.id, numeroDoJogo: 46, modificado: false)
       Game.create(time1: "Argelia", time2: "Russia", user_id: current_user.id, numeroDoJogo: 47, modificado: false)
       Game.create(time1: "Coreia do Sul", time2: "Belgica", user_id: current_user.id, numeroDoJogo: 48, modificado: false)
