@@ -246,6 +246,7 @@ DEPENDENCIES
   rails
   rails-i18n
   rails_12factor
+  rdoc
   sass-rails
   sdoc
   simple_form
